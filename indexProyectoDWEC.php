@@ -17,7 +17,76 @@ and open the template in the editor.
                 <div class="cuadro" id="arriba"></div>
             </div>
         <div class="cont">
-            
+            <table>
+                <tr>
+                    <th colspan="2">Práctica 1</th>
+                </tr>
+                <tr>
+                    <td>Ejercicio 1</td>
+                    <td><a href="codigoJS/practica01/ejercicio01.html">Ver</a></td>
+                </tr>
+                <tr>
+                    <td>Ejercicio 2</td>
+                    <td><a href="codigoJS/practica01/ejercicio02.html">Ver</a></td>
+                </tr>
+                <tr>
+                    <td>Ejercicio 3</td>
+                    <td><a href="codigoJS/practica01/ejercicio03.html">Ver</a></td>
+                </tr>
+                <tr>
+                    <td>Ejercicio 4</td>
+                    <td><a href="codigoJS/practica01/ejercicio04.html">Ver</a></td>
+                </tr>
+                <tr>
+                    <td>Ejercicio 5</td>
+                    <td><a href="codigoJS/practica01/ejercicio05.html">Ver</a></td>
+                </tr>
+                <tr>
+                    <td>Ejercicio 6</td>
+                    <td><a href="codigoJS/practica01/ejercicio06.html">Ver</a></td>
+                </tr>
+                <tr>
+                    <td>Ejercicio 7</td>
+                    <td><a href="codigoJS/practica01/ejercicio07.html">Ver</a></td>
+                </tr>
+                <tr>
+                    <td>Ejercicio 8</td>
+                    <td><a href="codigoJS/practica01/ejercicio08.html">Ver</a></td>
+                </tr>
+                <tr>
+                    <td>Ejercicio 9</td>
+                    <td><a href="codigoJS/practica01/ejercicio09.html">Ver</a></td>
+                </tr>
+                <tr>
+                    <td>Ejercicio 10</td>
+                    <td><a href="codigoJS/practica01/ejercicio10.html">Ver</a></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th colspan="2">Práctica 2</th>
+                </tr>
+                <tr>
+                    <td>Ejercicio 1</td>
+                    <td><a href="codigoJS/practica02/ejercicio01.html">Ver</a></td>
+                </tr>
+                <tr>
+                    <td>Ejercicio 2</td>
+                    <td><a href="codigoJS/practica02/ejercicio02.html">Ver</a></td>
+                </tr>
+                <tr>
+                    <td>Ejercicio 3</td>
+                    <td><a href="codigoJS/practica02/ejercicio03.html">Ver</a></td>
+                </tr>
+                <tr>
+                    <td>Ejercicio 4</td>
+                    <td><a href="codigoJS/practica02/ejercicio04.html">Ver</a></td>
+                </tr>
+                <tr>
+                    <td>Ejercicio 5</td>
+                    <td><a href="codigoJS/practica02/ejercicio05.html">Ver</a></td>
+                </tr>
+            </table>
         </div>
 			
     </body>
