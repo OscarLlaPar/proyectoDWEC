@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Desarrollo Web en Entorno Servidor</title>
+        <title>Desarrollo Web en Entorno Cliente</title>
         <link href="webroot/css/estilos.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>

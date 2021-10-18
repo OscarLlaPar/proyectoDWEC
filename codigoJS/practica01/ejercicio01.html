@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>OLP-DWEC 1-1</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
@@ -20,7 +20,18 @@ and open the template in the editor.
         </style>
     </head>
     <body>
-        <script src="ejercicio01.js">
+        <script>
+            /*
+            EJERCICIO 1:
+            Crea una página web que muestre un color de fondo aleatorio cada vez que 
+            entremos en ella.
+            En el head de la página, añadir:
+
+            */
+            var r=Math.floor(Math.random() * 256);
+            var g=Math.floor(Math.random() * 256);
+            var b=Math.floor(Math.random() * 256);
+            document.write(`<div id=\"fondo\" style=\"background-color: rgb(${r}, ${g}, ${b})\"></div>`);
         </script>
     </body>
 </html>

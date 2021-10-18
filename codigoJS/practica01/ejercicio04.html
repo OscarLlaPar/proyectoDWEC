@@ -6,12 +6,37 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>OLP-DWEC 1-4</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <script src="ejercicio04.js">
+        <script>
+            /*
+            EJERCICIO 4:
+            Crea un script que lea números enteros hasta que el usuario introduzca un número 0. 
+            Finalmente debe mostrar el número máximo, el mínimo y la media de todos ellos. 
+            Debes controlar que introduzca números y no cualquier otro carácter. 
+            */
+            var n;
+            var acum=parseInt(0);
+            var media;
+            for(var i=0;n!=0;i++){
+                n=parseInt(prompt("Introduzca numero"));
+                if(isNaN(n)){
+                    alert("No es un numero");
+                }
+                else if (n!=0){
+                    document.write(`<p>${n}</p>`);
+                    acum=parseInt(acum+n);
+                }
+                else{
+                    i--;
+                }
+            }
+            media=acum/i;
+            document.write(`<p>La media es ${media}</p>`);
+
         </script>
     </body>
 </html>

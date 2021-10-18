@@ -6,12 +6,40 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>OLP-DWEC 2-4</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table,tr{
+                border: solid black 1px;
+                border-collapse: collapse;
+            }
+            th{
+                background-color: grey;
+            }
+        </style>
     </head>
     <body>
-        <script src="ejercicio04.js">
+        <script>
+            /*
+            EJERCICIO 4
+            Crea una página que muestre los primeros 10000 símbolos de la tabla Unicode. Se 
+            mostrará en una tabla en la que en cada fila se indica el número de código, 
+            seguido del carácter de ese código. En cada fila se mostrarán 10 símbolos.
+            */
+
+            document.write(`<table>`);
+            for (var i=0;i<=10000;i++){
+                document.write(`<tr>`);
+                for (var j=1;j<=10;j++){
+                document.write(`<th>${i}</th>`);
+                document.write(`<td>&#${i};</td>`);
+                i++;
+                }
+                document.write(`</tr>`);
+
+            }
+            document.write(`</table>`);
         </script>
     </body>
 </html>
