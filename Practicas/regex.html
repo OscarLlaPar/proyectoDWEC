@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*EJERCICIO 1*/
+        /*Crea un script que valide un código postal (formado por 5 números del 
+        00000 al 52999).*/
+        /*var regEx=/^((5[012])|^([0-4][0-9]))([0-9]{3})$/
+        var cp=12345;
+        if(regEx.test(cp)){
+            console.log("Codigo valido");
+        }
+        else{
+            console.log("Codigo no valido");
+        }*/
+        /*EJERCICIO 2*/
+        /*Crea un script para validar que un documento recibido tenga formato
+        pdf o docx.*/
+        /*var regEx=/\.(pdf|docx)$/
+        var doc=prompt("Introduzca nombre de documento");
+        if(regEx.test(doc)){
+            console.log("Documento valido");
+        }
+        else{
+            console.log("Documento no valido");
+        }*/
+        /*EJERCICIO 3*/
+        /*Crea una aplicación web que sirva para validar NIFsindicando si es 
+        correcto o no. Un NIF consta de una posible primera letra que puede ser X,
+        Y o Z. Si no tiene letra llevará un número. A continuación,habrá 7 números 
+        más. Y finalmente una letra que cumple una formula:
+            •La fórmula de la letra consiste en dividir los números del NIF entre 
+            23 y tomar el resto. Para hacer este cálculo cuando el NIF empieza por 
+            una letra, se cambia la letra por un número. Si la primera letra del 
+            NIF es una X, se cambia por el número 0, la Y por 1 y la Z por 2.*/
+        var esValido;
+        var letras=['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'];
+        var regEx = /^[XYZ0-9][0-9]{7}[A-Z]$/
+        var dni = prompt("Introduzca DNI");
+        switch(dni[0]){
+            case 'X':
+                dni.replace(dni[0],'0');
+                break;
+            case 'Y':
+                dni.replace(dni[0],'1');
+                break;
+            case 'Z':
+                dni.replace(dni[0],'2');
+                break;
+        }
+        var cifras = parseInt(dni.substr(0,8));
+
+        if(regEx.test(dni)&&letras[cifras%23]==dni[8]){
+            console.log("DNI valido");
+        }
+        else{
+            console.log("DNI no valido");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            text-align: center;
+            display:flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+        }
+        form{
+            text-align: center;
+            padding: 50px;
+        }
+        #resultado{
+            padding: 50px;
+            
+            width:50vw;
+        }
+        #resultado p{
+            font-family: sans-serif;
+            border: solid red 1px;
+        }
+        .error{
+            background-color: red;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <form action="ejercicio1-1.html" method="post">
+        <input id="busqueda" type="text">
+        <button id="buscar" type="button">Buscar</button>
+    </form>
+    <div id="resultado">
+    </div>
+    <script>
+        let botonBuscar=document.getElementById("buscar");
+                botonBuscar.addEventListener("click",function(event){
+                    let xhttp=new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState === 4 && this.status === 200) {
+                            let parrafo=document.createElement("p");
+                            let resultado=document.getElementById("resultado");
+                           
+                                /*parrafo.innerHTML="Documento no encontrado";
+                                parrafo.setAttribute("class","error");*/
+                            
+                                parrafo.innerHTML=xhttp.responseText;
+                            resultado.appendChild(parrafo);
+                            let cerrar=document.createElement("button");
+                            resultado.appendChild(cerrar);
+                            cerrar.innerHTML="Cerrar";
+                            cerrar.setAttribute("id","cerrar");
+                            cerrar.addEventListener("click", function(event){
+                                resultado.removeChild(parrafo);
+                                resultado.removeChild(cerrar);
+                            })
+                        }
+                        if(this.readyState === 4 && this.status === 404){
+                            let parrafo=document.createElement("p");
+                            parrafo.innerHTML="Documento no encontrado";
+                            parrafo.setAttribute("class","error");
+                            resultado.appendChild(parrafo);
+                            let cerrar=document.createElement("button");
+                            resultado.appendChild(cerrar);
+                            cerrar.innerHTML="Cerrar";
+                            cerrar.setAttribute("id","cerrar");
+                            cerrar.addEventListener("click", function(event){
+                                resultado.removeChild(parrafo);
+                                resultado.removeChild(cerrar);
+                            })
+                        }
+                    };
+                    let campoTexto=document.getElementById("busqueda");
+                    xhttp.open("POST", `${campoTexto.value}.txt`, true);
+                    xhttp.send();
+                });
+    </script>
+</body>
+</html>

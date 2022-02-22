@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h1{
+            text-align: center;
+            color:teal;
+        }
+        input[type="text"]{
+            border:none;
+            border:solid brown 1px;
+            border-radius:10px 0 0 10px;
+            padding:10px;
+            width:500px;
+            font-size: 24px;
+        }
+        form{
+            display:flex;
+            height:50px;
+            width:100vw;
+            justify-content: center;
+        }
+        #add{
+            background-color: brown;
+            border:none;
+            border-radius:0px 10px 10px 0;
+            width:50px;
+            color:white;
+            font-weight: bold;
+            font-size: 24px;
+            transition:all 0.3s ease;
+        }
+        #add:hover{
+            cursor: pointer;
+            background-color: teal;
+        }
+        #lista{
+            margin-left: 50px;
+            /* list-style:circle; */
+            color:teal;
+            font-size: 24px;
+        }
+        #borrar{
+            background-color: brown;
+            margin: 10px;
+            padding:5px;
+            color: white;
+            border:none;
+            border-radius:5px;
+            transition:all 0.3s ease;
+        }
+        #borrar:hover{
+            cursor:pointer;
+            background-color: teal;
+        }
+        span:hover{
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de tareas</h1>
+    <form>
+        <input id="nuevaTarea" type="text" placeholder="Nueva tarea">
+        <button type="button" id="add">+</button>
+    </form>
+    <ul id="lista">
+
+    </ul>
+    <script>
+        let lista=document.getElementById("lista");
+        let botonAdd=document.getElementById("add");
+        let nuevaTarea=document.getElementById("nuevaTarea");
+        botonAdd.addEventListener("click", function(event){
+            if(nuevaTarea.value!=""){
+                let tareaLista=document.createElement("li");
+                lista.appendChild(tareaLista);
+                let textoLista=document.createElement("span");
+                textoLista.innerHTML=nuevaTarea.value;
+                nuevaTarea.value="";
+                tareaLista.appendChild(textoLista)
+                let borrar=document.createElement("button");
+                borrar.innerHTML = "Borrar"
+                borrar.setAttribute("id", "borrar")
+                borrar.setAttribute("type", "button")
+                tareaLista.appendChild(borrar);
+                textoLista.addEventListener("click",function(event){
+                    event.preventDefault();
+                    lista.insertBefore(tareaLista, lista.firstElementChild);
+                });
+                borrar.addEventListener("click",function(event){
+                        tareaLista.removeChild(borrar);
+                        lista.removeChild(tareaLista);
+                });
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol id="lista">
+        <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime reprehenderit libero blanditiis quidem beatae, corporis voluptate ea dolore illo perferendis sequi saepe? Saepe sint eveniet architecto neque iste, suscipit reprehenderit.</li>
+        <li>Doloribus fuga molestiae eius minima eveniet dicta voluptates expedita odit dolorem. Quia dolor architecto commodi ipsam, ad repellat eum dolore accusamus, voluptatum at asperiores aperiam nemo quam neque dolorum impedit.</li>
+        <li>Illum, soluta beatae aperiam iste ullam ex rem, vel deleniti dicta quam voluptatem sapiente voluptates, ipsum iusto dolorem? Corporis tenetur natus incidunt ut voluptate enim sapiente asperiores itaque officia error!</li>
+        <li>Libero ipsam possimus, error animi ad et amet ipsum explicabo, saepe harum accusantium? Tempore officiis corrupti in quia, magnam maxime labore, molestias quis distinctio, pariatur sapiente nulla cupiditate recusandae doloribus.</li>
+        <li>Deserunt sint enim unde veritatis quidem incidunt? Voluptate nostrum dignissimos laudantium illum unde quae optio accusamus iure. Saepe commodi, provident corrupti ab id accusamus minus necessitatibus, sequi ex error praesentium.</li>
+        <li>Ut corporis quasi optio ab, cumque repellat unde tempora saepe! Placeat cumque provident, molestias dolor dolore voluptas eaque nemo odio itaque dolorem a, natus eos ipsum architecto. Maxime, necessitatibus officiis.</li>
+        <li>Consequatur, mollitia. Nihil, nesciunt. Minus illum quis modi minima laudantium, eveniet harum maiores rem tempore, aperiam ex! Facilis totam, explicabo, ullam ipsam non odio aliquam iste labore corrupti tempore accusamus.</li>
+        <li>In dolorum quasi non corrupti atque ipsam, illum nisi provident! Quibusdam voluptatum quam tenetur. Earum sapiente suscipit vitae, quae iusto iste est repellendus mollitia praesentium perspiciatis vero laudantium ullam corrupti!</li>
+        <li>At repudiandae reiciendis commodi rem tempora maxime exercitationem. In magnam animi saepe culpa ad sint reiciendis tenetur laudantium officia non ipsum excepturi numquam illo magni accusantium, iure vel! Tempore, quam.</li>
+    </ol>
+    <script>
+        let texto = prompt("Introduzca texto que desea insertar: ");
+        do{
+            var n = prompt("Introduzca número del 1 al 10: ");
+        }while(n>10 || n<1);
+        if(n==10){
+            let textoNuevo = document.createElement("li");
+            let lista = document.getElementById("lista");
+            lista.appendChild(textoNuevo);
+            let negrita = document.createElement("strong");
+            textoNuevo.appendChild(negrita);
+            negrita.innerHTML=texto;
+        }
+        else{
+            let textoNuevo = document.createElement("strong");
+            textoNuevo.innerHTML=texto;
+            let parrafo = document.querySelector(`li:nth-child(${n})`);
+            console.log(parrafo);
+            parrafo.appendChild(textoNuevo);
+        }
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            height:100px;
+            width:100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script>
+        let container = document.getElementById("container");
+        let img= new Array();
+        for(let i=0;i<=7;i++){
+                img[i] = document.createElement("img");
+                container.appendChild(img[i]);
+                
+            }
+        function hora(){
+            
+            
+            let horaActual = new Date();
+            console.log(horaActual.getHours());
+            let horaString = parseInt(horaActual.getHours()/10).toString() + (horaActual.getHours()%10).toString() + ":" + parseInt(horaActual.getMinutes()/10).toString() + (horaActual.getMinutes()%10).toString() + ":" + parseInt(horaActual.getSeconds()/10).toString() + (horaActual.getSeconds()%10).toString();
+            console.log(horaString);
+            for(let i=0; i<=horaString.length;i++){
+                switch(horaString[i]){
+                    case "0": img[i].setAttribute("src", "img/0.gif");
+                        break;
+                    case "1": img[i].setAttribute("src", "img/1.png");
+                        break;
+                    case "2": img[i].setAttribute("src", "img/2.svg");
+                        break;
+                    case "3": img[i].setAttribute("src", "img/3.png");
+                        break;
+                    case "4": img[i].setAttribute("src", "img/4.png");
+                        break;
+                    case "5": img[i].setAttribute("src", "img/5.gif");
+                        break;
+                    case "6": img[i].setAttribute("src", "img/6.gif");
+                        break;
+                    case "7": img[i].setAttribute("src", "img/7.png");
+                        break;
+                    case "8": img[i].setAttribute("src", "img/8.png");
+                        break;
+                    case "9": img[i].setAttribute("src", "img/9.png");
+                        break;
+                    case ":": img[i].setAttribute("src", "img/dospuntos.png");
+                        break;
+                }
+                
+            }
+
+        }
+        setInterval(hora,1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Document Object Model</title>
+    <style>
+        .miClase {
+            color: red;
+        }
+        img{
+            height:200px;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", inicio);
+
+        function inicio() {
+            document.getElementById("crearParrafo").addEventListener("click", crearParrafo);
+            document.getElementById("crearImagen").addEventListener("click", crearImagen);
+            document.getElementById("borrarUltimo").addEventListener("click", borrarUltimo);
+            document.getElementById("borrarPrimero").addEventListener("click", borrarPrimero);
+            document.getElementById("sustituirPrimeroVacio").addEventListener("click", sustituirPrimero);
+        }
+
+        function crearParrafo() {
+            let parrafo = document.getElementById("texto").value;
+            let div = document.getElementById("div1");
+            let contenidoParrafo = parrafo;
+            let nuevoParrafo = document.createElement("p");0
+            div.appendChild(nuevoParrafo);
+            nuevoParrafo.classList.add("miClase")
+            nuevoParrafo.appendChild(document.createTextNode(parrafo));
+            document.getElementById("texto").value=null;
+
+        }
+
+        function crearImagen() {
+            
+            let urlImagen = prompt("Introduzca ruta relativa de la imagen: ");
+            let nuevaImagen = document.createElement("img");
+            document.getElementById("div1").appendChild(nuevaImagen);
+            nuevaImagen.src = urlImagen;
+
+        }
+
+        function borrarUltimo() {
+            let div = document.getElementById("div1");
+            div.removeChild(div.lastChild);
+        }
+
+        function borrarPrimero() {
+            let div = document.getElementById("div1");
+            div.removeChild(div.firstChild);
+        }
+
+        function sustituirPrimero() {
+            let div = document.getElementById("div1");
+            div.firstChild.innerHTML=null;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div1"></div>
+    <br/>
+    <textarea id="texto"></textarea>
+    <br/>
+    <button id="crearParrafo">Crear parrafo</button>
+    <button id="crearImagen">Crear imagen</button>
+    <button id="borrarUltimo">Borrar ultimo</button>
+    <button id="borrarPrimero">Borrar primero</button>
+    <button id="sustituirPrimeroVacio">Sustituir primer párrafo por vacío</button>
+
+</body>
+
+</html>
