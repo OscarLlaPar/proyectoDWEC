@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="lista">
+
+    </ul>
+    <script>
+        let lista = document.getElementById("lista");
+        let palabras=[
+            "uno",
+            "dos",
+            "tres",
+            "cuatro",
+            "cinco",
+            "seis",
+            "siete",
+            "ocho",
+            "nueve",
+            "diez"
+        ];
+        for(i=0;i<10;i++){
+            setTimeout(crearElemento,i*1000,palabras[i],lista);
+        }
+        function crearElemento(p,lista){ 
+            let elemento = document.createElement("li");
+            console.log(elemento);
+            elemento.innerHTML=p;
+            console.log(p);
+            lista.appendChild(elemento);
+            console.log(lista);
+        }
+        setTimeout(ordenarLista, 12000, lista, palabras)
+        function ordenarLista(lista, palabras){
+            if(confirm("Desea ordenar la lista?")){
+                lista.innerHTML="";
+                palabras.sort();
+                for(i=0;i<10;i++){
+                    crearElemento(palabras[i],lista);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

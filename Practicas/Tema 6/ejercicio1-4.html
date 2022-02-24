@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="velocidad">Velocidad 0</p>
+    <script>
+        document.addEventListener("keydown", function(event){
+            let elemento = document.getElementById("velocidad");
+            let palabras= elemento.innerHTML.split(' ');
+            let velocidad = parseInt(palabras[1])
+            if(event.keyCode===38 && velocidad<120){
+                velocidad++
+            }
+            if(event.keyCode===40 && velocidad>0){
+                velocidad--
+            }
+            elemento.innerHTML=`Velocidad ${velocidad}`
+        })
+    </script>
+</body>
+</html>

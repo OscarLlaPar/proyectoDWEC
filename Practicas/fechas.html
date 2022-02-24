@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*EJERCICIO 1*/
+        /*Crea un script que pida al usuario su fecha de nacimiento y le diga el
+        día de la semana en que nació y el día de la semana de todos sus 
+        cumpleaños hasta este año.*/
+        /*var entradaFecha=prompt("Introduzca su fecha de nacimiento (dd/mm/aaaa)");
+        var numerosFecha=entradaFecha.split('/');
+        var dias=['domingo','lunes','martes','miercoles','jueves','viernes','sabado'];
+        console.log(numerosFecha);
+        var fechaNac= new Date (parseInt(numerosFecha[2]),parseInt(numerosFecha[1])-1,parseInt(numerosFecha[0]));
+        console.log(fechaNac);
+        document.write(`<h2>Fecha de nacimiento: ${entradaFecha}</h2>`)
+        document.write("<ul>");
+        for(let i=0;(parseInt(fechaNac.getFullYear()))<=2021;i++){
+            
+            document.write(`<li>${fechaNac.getDate()+'/'+fechaNac.getMonth()+'/'+fechaNac.getFullYear()}: ${dias[fechaNac.getDay()]}</li>`);
+            fechaNac.setFullYear(parseInt(fechaNac.getFullYear()+1));
+        }
+        document.write("</ul>");*/
+        /*EJERCICIO 2*/
+        /*Crea una función que reciba como parámetros: día, mes, año, hora, minutos y segundos
+        y cree una fecha con esos datos. Si la función no recibe ningún parámetro creará la fecha actual.
+        La función mostrará un alert con la informaciónen el siguiente formato:
+            Hoy es lunes, 1 de noviembre de 2021 y son las 17 horas, 15 minutos y 38 segundos.”
+        */
+        /*function crearFecha(dia, mes, anyo, hora, minutos, segundos){
+            let fecha;
+            if(dia==null&&mes==null&&anyo==null&&hora==null&&minutos==null&&segundos==null){
+                fecha = new Date ();
+            }
+            else{
+                fecha = new Date (anyo, mes-1, dia, hora, minutos, segundos);
+            }
+            let dias=['domingo','lunes','martes','miercoles','jueves','viernes','sabado'];
+            let meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
+            let salida = `Hoy es ${dias[fecha.getDay()]}, ${fecha.getDate()} de ${meses[fecha.getMonth()]} de ${fecha.getFullYear()} y son las ${fecha.getHours()} horas, ${fecha.getMinutes()} minutos, ${fecha.getSeconds()} segundos.`;
+            alert(salida);
+        }
+
+        crearFecha();*/
+        /*EJERCICIO 3*/
+        /*Crea un script que pida al usuario un mes y unañoy muestre uncalendario de ese mes.*/
+        var mes = prompt("Introduzca mes: ");
+        var anyo= prompt("introduzca año: ");
+        var fecha= new Date(anyo, mes-1,1);
+        var mesDeFecha = fecha.getMonth();
+        var anyoDeFecha = fecha.getFullYear();
+        var meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+        var calendario= [
+            ["","","","","","",""],
+            ["","","","","","",""],
+            ["","","","","","",""],
+            ["","","","","","",""],
+            ["","","","","","",""]
+        ]
+        console.log(fecha);
+        for(let i=0;parseInt(fecha.getMonth())==mesDeFecha;i++){
+            for(let j = fecha.getDay();j<7;j++){
+                if(fecha.getMonth()==mesDeFecha){
+                    calendario[i][fecha.getDay()]=fecha.getDate();
+                    fecha.setDate(parseInt(fecha.getDate()+1));
+                }
+            }
+        }
+        console.log(calendario);
+
+        document.write(`<table>`);
+        document.write(`<tr>`);
+        document.write(`<th colspan="7">${meses[mesDeFecha].toUpperCase()} ${anyoDeFecha}</th>`);
+        document.write(`</tr>`);
+        document.write(`<tr>`);
+        document.write(`<th>D</th>`);
+        document.write(`<th>L</th>`);
+        document.write(`<th>M</th>`);
+        document.write(`<th>X</th>`);
+        document.write(`<th>J</th>`);
+        document.write(`<th>V</th>`);
+        document.write(`<th>S</th>`);
+        document.write(`</tr>`);
+        for(semana of calendario){
+            document.write(`<tr>`);
+            for(dia of semana){
+                document.write(`<td>${dia}</td>`);
+            }
+            document.write(`</tr>`);
+        }
+        document.write(`</table>`);
+
+        /*EJERCICIO 4*/
+        /*Crea un script que pida al usuario un mes y devuelva todas las personas que cumplan años en ese mes. 
+        Los datos de las personas las tendremos en un mapa que generaremos de forma aleatoria. El mapa contendrá
+        100 pares clave valor, donde las claves serán números consecutivos y los valores fechas de nacimiento 
+        generadas aleatoriamenteentre el 01/01/1980y el 31/12/2020. */
+        /*var mes = prompt("Introduzca mes: ");
+        var mapa=new Map();
+        var fechaInicio= new Date(1980,0,1);
+        var fechaFin= new Date(2020,11,31);
+        var meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+        for(let i=1;i<=100;i++){
+            mapa.set(i,new Date(+fechaInicio.getTime() + Math.random() * (fechaFin.getTime() - fechaInicio.getTime())))
+        }
+
+        for(let i=1;i<=100;i++){
+            if(mapa.get(i).getMonth()==mes-1){
+                document.write(`<p>${i} - ${mapa.get(i).getDate()} de ${meses[mapa.get(i).getMonth()]} de ${mapa.get(i).getFullYear()}</p>`);
+            }
+        }*/
+    </script>
+</body>
+</html>

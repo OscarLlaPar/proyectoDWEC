@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header{
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+        main{
+            width:100vw;
+            height:60vh;
+            display: grid;
+            grid-template-columns: 2fr 4fr 4fr;
+            grid-template-rows: 0.5fr 9.5fr;
+        }
+        nav{
+            grid-column: 1/4;
+            text-align: center;
+            background-color: gray;
+            color:white;
+            display:grid;
+            grid-template-columns: 2fr 4fr 4fr;
+            font-size:24px;
+            font-weight: bold;
+        }
+        aside *{
+            margin:10px;
+        }
+        #container{
+            background-color: salmon;
+            display:grid;
+            grid-template-columns: 5fr 5fr;
+            grid-column: 2/4;
+            text-align: center;
+        }
+        #osi, #tcpip{
+            width:100%;
+            height:100%;
+            padding:10px;
+            gap:10px;
+            display:none;
+        }
+        .elemento{
+            border:solid black 3px;
+            border-radius:10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size:24px;
+            font-weight: bold;
+        }
+        #osi>.elemento:nth-child(-n+3), #tcpip>.elemento:nth-child(1){
+            background-color:lightseagreen;
+        }
+        #osi>.elemento:nth-child(4), #tcpip>.elemento:nth-child(2){
+            background-color:royalblue;
+        }
+        #osi>.elemento:nth-child(5), #tcpip>.elemento:nth-child(3){
+            background-color:orangered;
+        }
+        #osi>.elemento:nth-last-child(-n+2), #tcpip>.elemento:nth-child(4){
+            background-color:darkorchid;
+        }
+        #osi{
+            grid-template-rows: repeat(7,1.4fr);
+            grid-column: 1/2;
+        }
+        #tcpip{
+            grid-template-rows: 4.2fr 1.4fr 1.4fr 2.8fr;
+            grid-column: 2/3;
+        }
+        #velo{
+            width:100vw;
+            height:100vh;
+            background-color: black;
+            position:absolute;
+            top:-100%;
+            transition:all 0.5s ease;
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Niveles OSI y TCP/IP</h1>
+    </header>
+    <main>
+        <nav>
+            <div></div>
+            <div>Modelo OSI</div>
+            <div>Modelo TCP/IP</div>
+        </nav>
+        <aside>
+            <input id="mostrarOsi" type="checkbox">
+            <label>OSI</label>
+            <br>
+            <input id="mostrarTcpip" type="checkbox">
+            <label>TCP/IP</label>
+            <br>
+            <button id="ocultarAmbas" type="button">Ocultar ambas</button>
+            <br>
+            <button id="ocultarTodo" type="button">Ocultar todo</button>
+        </aside>
+        <div id="container">
+            <div id="osi">
+                <div class="elemento">Aplicación</div>
+                <div class="elemento">Presentación</div>
+                <div class="elemento">Sesión</div>
+                <div class="elemento">Transporte</div>
+                <div class="elemento">Red</div>
+                <div class="elemento">Enlace a datos</div>
+                <div class="elemento">Física</div>
+            </div>
+            <div id="tcpip">
+                <div class="elemento">Aplicación</div>
+                <div class="elemento">Transporte</div>
+                <div class="elemento">Internet</div>
+                <div class="elemento">Interfaz de red</div>
+            </div>
+        </div>
+        <div id="velo">
+
+        </div>
+    </main>
+    <script>
+        let botonOsi=document.getElementById("mostrarOsi")
+        botonOsi.addEventListener("change", function(event){
+            
+            let osi=document.getElementById("osi");
+            if(botonOsi.checked){
+                osi.style.display="grid";
+            }
+            else{
+                osi.style.display="none";
+            }
+        })
+        let botonTcpip=document.getElementById("mostrarTcpip")
+        botonTcpip.addEventListener("change", function(event){
+            
+            let tcpip=document.getElementById("tcpip");
+            if(botonTcpip.checked){
+                tcpip.style.display="grid";
+            }
+            else{
+                tcpip.style.display="none";
+            }
+        })
+        let ocultarAmbas=document.getElementById("ocultarAmbas")
+        ocultarAmbas.addEventListener("click",function(event){
+            let osi=document.getElementById("osi");
+            let tcpip=document.getElementById("tcpip");
+            osi.style.display="none";
+            tcpip.style.display="none";
+            botonOsi.checked=false;
+            botonTcpip.checked=false;
+        })
+        let ocultarTodo=document.getElementById("ocultarTodo")
+        let velo = document.getElementById("velo");
+        ocultarTodo.addEventListener("click",function(event){
+            velo.style.top=0;
+        })
+        velo.addEventListener("click", function(event){
+            velo.style.top="-100%";
+        })
+    </script>
+</body>
+</html>

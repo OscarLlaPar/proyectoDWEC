@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script>
+            let fechaCaducidad = new Date();
+            let fecha = Date.parse(fechaCaducidad);
+            fechaCaducidad.setTime(fecha+365*24*60*60*1000);
+            fechaCaducidad=fechaCaducidad.toUTCString();
+
+            if(leerCookie("aceptadas")==null){
+                if(confirm("Aceptas las cookies?")){
+                    console.log("Aceptadas")
+                    document.cookie = `aceptadas=1;EXPIRES=${fechaCaducidad}`
+                    console.log(leerCookie("aceptadas"))
+                    document.cookie = `numConexiones=0;EXPIRES=${fechaCaducidad}`
+                }
+                else{
+                    let textoCookie = `aceptadas=0;EXPIRES=${fechaCaducidad}`
+                    document.cookie=textoCookie;
+                }
+            }
+           else if(leerCookie("aceptadas")==1){
+                
+                let container = document.getElementById("container");
+                let numVisitas = document.createElement("p")
+                console.log(leerCookie("numConexiones"))
+                let contenidoCookie = parseInt(leerCookie("numConexiones"))+1
+                console.log(contenidoCookie)
+                numVisitas.innerHTML=contenidoCookie;
+                container.appendChild(numVisitas)
+
+                let cambioCookie = `numConexiones=${contenidoCookie};EXPIRES=${fechaCaducidad}`
+                document.cookie=cambioCookie;
+
+            }
+            function leerCookie(nombre) {
+                let micookie
+                var lista = document.cookie.split(";");
+                for (i in lista) {
+                    var busca = lista[i].search(nombre);
+                    if (busca > -1) {micookie=lista[i]}
+                    }
+                    if(micookie==undefined){
+                        return null;
+                    }
+                    else{
+                        var igual = micookie.indexOf("=");
+                        var valor = micookie.substring(igual+1);
+                        return valor;
+                    }
+            }
+    </script>
+</body>
+</html>

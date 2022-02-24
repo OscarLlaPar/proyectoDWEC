@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header{
+            background-color: darkorange;
+            color:white;
+            text-align:center;
+            padding:10px;
+        }
+        h1{
+            text-transform: uppercase;
+        }
+        main{
+            display:flex;
+            padding:20px;
+            gap:20px;
+        }
+        form *{
+            margin:10px;
+        }
+        img{
+            height:200px;
+            width:200px;
+        }
+        #texto{
+            display:none;
+        }
+        .mostrar{
+            display:block;
+        }
+        #error{
+            background-color: red;
+            color:white;
+            display:none;
+        }
+        #cuadro{
+            height:100px;
+            width:200px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Informe incidencia</h1>
+    </header>
+    <main>
+        <div>
+            <img id="imagen" src="https://serviciosreunidos.es/wp-content/uploads/292.jpg">
+        </div>
+        <form>
+            <label>Tipo de incidencia: </label>
+            <select id="tipo">
+                <option value="1" default>Distribución</option>
+                <option value="2">Oficina</option>
+                <option value="3">Producción</option>
+            </select>
+            <br>
+            <label>Número de serie: </label>
+            <input id="numSerie">
+            <div id="error">
+                Incorrecto
+            </div>
+            <br>
+            <button id="mostrarDesc" type="button">Mostrar Descripción</button>
+            <div id="cuadro">
+                <textarea id="texto"></textarea>
+            </div>
+            <br>
+            <button type=submit id="enviar" name="enviar">Enviar datos</button>
+        </form>
+    </main>
+    <script>
+        let desplegable=document.getElementById("tipo");
+        desplegable.addEventListener("change", function(event){
+            let opcionSeleccionada=desplegable.options[document.getElementById("tipo").selectedIndex].value
+            let imagen=document.getElementById("imagen");
+            switch(opcionSeleccionada){
+                case "1": imagen.setAttribute("src", "https://serviciosreunidos.es/wp-content/uploads/292.jpg");
+                    break;
+                case "2": imagen.setAttribute("src", "https://www.oficinasmontiel.com/blog/wp-content/uploads/2021/10/Portada-3-1024x683.jpg");
+                    break;
+                case "3": imagen.setAttribute("src", "https://blog.infaimon.com/wp-content/uploads/2018/01/iStock-696989178.jpg");
+            }
+        })
+        let botonMostrarDesc=document.getElementById("mostrarDesc");
+        botonMostrarDesc.addEventListener("click", function(event){
+            // event.preventDefault();
+            let cuadroTexto=document.getElementById("texto");
+            cuadroTexto.style.display="block";
+            console.log(cuadroTexto.style.display)
+        });
+        let numSerie=document.getElementById("numSerie");
+        numSerie.addEventListener("change",function(event){
+            let input=numSerie.value;
+            console.log(input)
+            var regEx=/^[0-9]{3}[A-Z]{4}[12A]$/;
+            let ok = regEx.test(input)
+            let error=document.getElementById("error");
+            console.log(ok);
+            if(!ok){
+                
+                error.style.display="block";
+            }
+            else{
+                error.style.display="none";
+            }
+        })
+    </script>
+</body>
+</html>

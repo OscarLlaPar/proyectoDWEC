@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>OLP-DWEC 1-1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #fondo{
+                position: fixed;
+                left:0;
+                top:0;
+                width:100%;
+                height:100%;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            /*
+            EJERCICIO 1:
+            Crea una página web que muestre un color de fondo aleatorio cada vez que 
+            entremos en ella.
+            En el head de la página, añadir:
+
+            */
+            var r=Math.floor(Math.random() * 256);
+            var g=Math.floor(Math.random() * 256);
+            var b=Math.floor(Math.random() * 256);
+            document.write(`<div id=\"fondo\" style=\"background-color: rgb(${r}, ${g}, ${b})\"></div>`);
+        </script>
+    </body>
+</html>
