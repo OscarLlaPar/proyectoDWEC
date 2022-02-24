@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height:100vh;
+        }
+        #cuadro{
+            width:50%;
+            height:50%;
+            border: solid black 1px;
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false">
+    <div id="cuadro">
+    </div>
+    <script>
+        let cuadro = document.getElementById("cuadro")
+        cuadro.addEventListener("mouseenter", function(event){
+            cuadro.style.backgroundColor = "green";
+        })
+        cuadro.addEventListener("mouseout", function(event){
+            cuadro.style.backgroundColor = "transparent";
+        })
+        cuadro.addEventListener("mousedown",function(event){
+            if(event.which===1){
+                cuadro.style.backgroundColor = "red";
+            }
+            if(event.which===3){
+                cuadro.style.backgroundColor = "blue";
+            }
+        })
+        cuadro.addEventListener("mouseup", function(event){
+            cuadro.style.backgroundColor = "green";
+        })
+    </script>
+</body>
+</html>

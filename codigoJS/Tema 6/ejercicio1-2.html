@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            text-align:center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #fondo{
+            width:100vw;
+            height:100vh;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+        p{
+            font-size: 64px;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div id="fondo">
+        <p>Pulsa Alt+F12 para cambiar la imagen de fondo</p>
+    </div>
+    <script>
+        
+        document.addEventListener("keyup", function(event){
+            if(event.altKey && event.keyCode === 123){
+                let fondo=document.getElementById("fondo");
+                fondo.style.backgroundImage = "url(https://i.pinimg.com/736x/c9/25/8d/c9258dfe8033a3e1a639442fa7803142.jpg)"
+            }
+        })
+    </script>
+</body>
+</html>

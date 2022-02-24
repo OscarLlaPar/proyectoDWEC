@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        *,*:focus,*:hover{
+            outline:none;
+        }
+        body{
+            display:flex;
+            flex-flow: column;
+            gap: 15px;
+            align-items: center;
+        }
+        header{
+            text-align: center;
+            width: 100vw;
+            height:50px;
+            padding: 15px 0;
+        }
+        form{
+            display:flex;
+            flex-flow:column;
+            gap: 10px;
+            align-items: center;
+        }
+        input{
+            border:solid red 1px;
+            border-radius:5px;
+            padding:10px;
+            font-size:16px;
+        }
+        label{
+            margin:5px 0 0 5px;
+            align-self: flex-start;
+        }
+        button{
+            width:100%;
+            margin:20px 0;
+            padding:10px;
+            font-size:16px;
+            border:none;
+            background-color: cornflowerblue;
+            border-radius:5px;
+            transition:all 0.3s ease;
+            font-weight: bold;
+        }
+        button:hover{
+            cursor:pointer;
+            background-color: darkblue;
+            color:white;
+        }
+        .valido{
+            border:solid green 1px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Registrar usuario</h1>
+    </header>
+    <main>
+        <form>
+            <label>Nombre</label>
+            <input id="nombre" type="text">
+            <label>Apellidos</label>
+            <input id="apellidos" type="text">
+            <label>Email</label>
+            <input id="email" type="text">
+            <label>NIF</label>
+            <input id="nif" type="text">
+            <button id="enviar" type="button">Enviar</button>
+        </form>
+    </main>
+    <script>
+        let campoNombre = document.getElementById("nombre");
+        campoNombre.addEventListener("keyup",function(event){
+            if(campoNombre.value.length >=2){
+                campoNombre.classList.add("valido");
+            }
+            else{
+                campoNombre.classList.remove("valido");
+            }
+        })
+        let campoApellidos = document.getElementById("apellidos");
+        campoApellidos.addEventListener("keyup",function(event){
+            if(campoApellidos.value.length >=2){
+                campoApellidos.classList.add("valido");
+            }
+            else{
+                campoApellidos.classList.remove("valido");
+            }
+        })
+        let campoEmail = document.getElementById("email");
+        campoEmail.addEventListener("keyup",function(event){
+            let regEx = /^[A-Za-z0-9]{1,}@[A-Za-z0-9]{1,}$/;
+            if(regEx.test(campoEmail.value)){
+                campoEmail.classList.add("valido");
+            }
+            else{
+                campoEmail.classList.remove("valido");
+            }
+        })
+        let campoNif = document.getElementById("nif");
+        campoNif.addEventListener("keyup",function(event){
+            
+        })
+    </script>
+</body>
+</html>

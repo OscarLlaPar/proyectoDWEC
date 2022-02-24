@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <head>
+        <h1>Usuario aleatorio</h1>
+    </head>
+    <main id="contenido">
+
+    </main>
+    <script>
+        let contenido=document.getElementById("contenido");
+        let ajax=fetch(`https://randomuser.me/api/`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                let fotoPerfil=document.createElement("img");
+                fotoPerfil.setAttribute("src",data.results[0].picture.large)
+                contenido.appendChild(fotoPerfil);
+                let nombre=document.createElement("h3");
+                let nombreCompleto=data.results[0].name.title+" "+data.results[0].name.first+" "+data.results[0].name.last;
+                let nombreUsuario=data.results[0].login.username
+                nombre.innerHTML=nombreCompleto+" ("+nombreUsuario+")";
+                contenido.appendChild(nombre);
+                let email=document.createElement("p");
+                email.innerHTML=data.results[0].email
+                contenido.appendChild(email)
+            })
+            .catch(err => console.log(err));
+    </script>
+</body>
+</html>
