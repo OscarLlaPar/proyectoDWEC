@@ -111,8 +111,19 @@
         })
         let campoNif = document.getElementById("nif");
         campoNif.addEventListener("keyup",function(event){
-            
+            let ajax=fetch(`validarDni.php?dni=${campoNif.value}`)
+            .then(response => response.json())
+            .then(data => {
+                if(data.valido){
+                    campoNif.classList.add("valido");
+                }
+                else{
+                    campoNif.classList.remove("valido");
+                }
+            })
+            .catch(err => console.log(err));
         })
+
     </script>
 </body>
 </html>

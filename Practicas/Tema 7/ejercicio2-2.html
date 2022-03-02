@@ -7,9 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <head>
+    <header>
         <h1>Usuario aleatorio</h1>
-    </head>
+    </header>
     <main id="contenido">
 
     </main>
@@ -30,6 +30,9 @@
                 let email=document.createElement("p");
                 email.innerHTML=data.results[0].email
                 contenido.appendChild(email)
+                let direccion=document.createElement("p");
+                direccion.innerHTML= `${data.results[0].location.street.name} ${data.results[0].location.street.number}, ${data.results[0].location.city}, ${data.results[0].location.state}`;
+                contenido.appendChild(direccion);
             })
             .catch(err => console.log(err));
     </script>
