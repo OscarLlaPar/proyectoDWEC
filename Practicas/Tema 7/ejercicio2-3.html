@@ -37,7 +37,7 @@
             height:90vh;
         }
         #contenido div{
-            border:solid black 1px;
+            border:solid lightgrey 1px;
             padding:10px;
             display:flex;
             flex-flow:column;
@@ -48,9 +48,24 @@
             transition: all 0.3s ease;
         }
         #contenido div:hover{
-            border:solid white 1px;
+            border:solid dimgray 1px;
         }
-
+        #contenido div:nth-child(2n+1){
+            background-color: floralwhite;
+            color: black;
+        }
+        button{
+            border: none;
+            background-color: darkcyan;
+            border: solid purple 2px;
+            padding: 10px;
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+        button:hover{
+            background-color: purple;
+            cursor:pointer
+        }
     </style>
 </head>
 <body>
@@ -83,11 +98,45 @@
                     let direccion=document.createElement("p");
                     direccion.innerHTML= `${data.results[i].location.street.name} ${data.results[i].location.street.number}, ${data.results[i].location.city}, ${data.results[i].location.state}`;
                     usuario.appendChild(direccion);
+                    let botonCambiar = document.createElement("button");
+                    botonCambiar.innerHTML= "Cambiar";
+                    botonCambiar.addEventListener("click", mostrarUsuario);
+                    usuario.appendChild(botonCambiar);
                     contenido.appendChild(usuario);
+
+
+                    function mostrarUsuario(){
+                        let ajaxB = fetch(`https://randomuser.me/api/`)
+                            .then(response => response.json())
+                            .then(data => {    
+                                usuario.innerHTML="";
+                                let fotoPerfil=document.createElement("img");
+                                fotoPerfil.setAttribute("src",data.results[0].picture.large)
+                                usuario.appendChild(fotoPerfil);
+                                let nombre=document.createElement("h3");
+                                let nombreCompleto=data.results[0].name.title+" "+data.results[0].name.first+" "+data.results[0].name.last;
+                                let nombreUsuario=data.results[0].login.username
+                                nombre.innerHTML=nombreCompleto+" ("+nombreUsuario+")";
+                                usuario.appendChild(nombre);
+                                let email=document.createElement("p");
+                                email.innerHTML=data.results[0].email
+                                usuario.appendChild(email)
+                                let direccion=document.createElement("p");
+                                direccion.innerHTML= `${data.results[0].location.street.name} ${data.results[0].location.street.number}, ${data.results[0].location.city}, ${data.results[0].location.state}`;
+                                usuario.appendChild(direccion);
+                                let botonCambiar = document.createElement("button");
+                                botonCambiar.innerHTML= "Cambiar";
+                                botonCambiar.addEventListener("click", mostrarUsuario);
+                                usuario.appendChild(botonCambiar);
+                            })
+                            .catch(err => console.log(err));
+                         }
                 }
                
             })
             .catch(err => console.log(err));
+
+            
     </script>
 </body>
 </html>
