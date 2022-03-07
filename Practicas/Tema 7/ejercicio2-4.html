@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="cargar">
+        Cargar mapa
+    </button>
+    <div id="contenido">
+
+    </div>
+    <script>
+         let botonCargar=document.getElementById("cargar");
+         botonCargar.addEventListener("click",function(event){
+            let key="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvc2Nhci5sbGFwYXJAZWR1Y2EuamN5bC5lcyIsImp0aSI6IjU3ZTNhZWYyLWY0ZGEtNGE5Yy05NzhhLWIyOWM0YTFhZDdmMSIsImlzcyI6IkFFTUVUIiwiaWF0IjoxNjQ2NjQ0NDYxLCJ1c2VySWQiOiI1N2UzYWVmMi1mNGRhLTRhOWMtOTc4YS1iMjljNGExYWQ3ZjEiLCJyb2xlIjoiIn0.remEUFQi-aFdqIzrucJK3uK5z7kDuAffkQ-Lw4cATIE"
+            let ajaxB = fetch(`https://opendata.aemet.es/opendata/api/mapasygraficos/analisis?api_key=${key}`)
+                .then(response => response.json())
+                .then(data => {    
+                    console.log(data);
+                    let contenido=document.getElementById("contenido");
+                    let mapa=document.createElement("img");
+                    mapa.setAttribute("src",data.datos);
+                    mapa.style.transform="rotate(90deg)";
+                    mapa.style.marginLeft="150px";
+                    mapa.style.width="700px";
+                    contenido.appendChild(mapa);
+                    botonCargar.style.display="none";
+                })
+                .catch(err => console.log(err));
+         })
+         
+    </script>
+</body>
+</html>
